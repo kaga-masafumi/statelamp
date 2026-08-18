@@ -1,0 +1,44 @@
+{
+  "id": "statelamp",
+  "name": "StateLamp",
+  "description": "Publishes normalized OpenClaw run state to StateLamp Bridge.",
+  "activation": {
+    "onStartup": true
+  },
+  "contracts": {
+    "tools": ["human_required", "human_required_clear"]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "agentId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "default": "openclaw",
+        "description": "Stable logical agent identity chosen by the user, for example agent-a or agent-b"
+      },
+      "bridgeUrl": {
+        "type": "string",
+        "default": "http://127.0.0.1:18480/api/v1/status"
+      },
+      "attentionUrl": {
+        "type": "string",
+        "description": "Optional explicit Human Required API URL"
+      },
+      "agentName": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "description": "Deprecated migration alias for agentId"
+      },
+      "timeoutMs": {
+        "type": "integer",
+        "minimum": 100,
+        "maximum": 10000,
+        "default": 1500
+      }
+    }
+  }
+}

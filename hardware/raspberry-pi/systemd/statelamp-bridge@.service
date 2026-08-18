@@ -1,0 +1,17 @@
+[Unit]
+Description=StateLamp Bridge API
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/opt/statelamp
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/statelamp/bridge/.venv/bin/uvicorn app.main:app --app-dir bridge --host 127.0.0.1 --port 18480
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

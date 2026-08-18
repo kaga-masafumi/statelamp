@@ -1,0 +1,5 @@
+# Raspberry Pi HDMI RC devices are misclassified as pointing sticks by
+# input_id. Cage sees pointer capability and leaves a cursor at screen center.
+# Ignore only those libinput pointer devices; HDMI output, jack detection, and
+# the ADS7846 touchscreen remain available.
+ACTION!="remove", SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="vc4-hdmi-*", ENV{ID_INPUT_POINTINGSTICK}=="1", ENV{LIBINPUT_IGNORE_DEVICE}="1"

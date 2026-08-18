@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>StateLamp Console</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-state="offline">
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">STATELAMP</p>
+        <h1>Agent Team</h1>
+      </div>
+      <div class="agent-nav"><span id="agent-count">0 AGENTS</span><button id="auto-select" type="button">AUTO</button></div>
+      <div class="connection"><span id="connection-dot"></span><span id="connection">OFFLINE</span></div>
+    </header>
+
+    <section class="state-panel">
+      <div class="mascot-wrap" aria-label="Pixel cat mascot">
+        <span class="sparkle sparkle-one">+</span>
+        <span class="sparkle sparkle-two">o</span>
+        <svg class="pixel-cat" viewBox="0 0 152 108" role="img" aria-hidden="true" shape-rendering="crispEdges">
+          <g class="cat-base">
+            <path class="cat-ink" d="M28 28h8v8h4v10h10v22H20V46h4V36h4zm88 0h8v8h4v10h4v22h-30V46h10V36h4zM24 52h104v54H24z"/>
+            <path class="cat-pink" d="M28 42h10v18H28zm86 0h10v18h-10z"/>
+            <path class="cat-fur" d="M30 56h92v44H30z"/>
+            <path class="cat-ink" d="M30 56h34v12h-6v6H36v-6h-6zm58 0h34v12h-6v6H94v-6h-6z"/>
+            <path class="cat-fur" d="M64 52h24v34H64zM58 62h36v16H58z"/>
+            <path class="cat-pink" d="M73 80h6v5h-6zM41 88h12v3H41zm58 0h12v3H99z"/>
+            <path class="cat-ink" d="M14 81h18v3H14zm3 8h17v3H17zm103-8h18v3h-18zm-2 8h17v3h-17z"/>
+          </g>
+          <g class="face face-idle">
+            <path class="cat-ink" d="M45 75h18v4H45zm44 0h18v4H89zM67 89h8v3h-8zm10 0h8v3h-8z"/>
+          </g>
+          <g class="face face-open">
+            <path class="cat-ink" d="M47 67h14v16H47zm44 0h14v16H91z"/>
+            <path class="cat-eye" d="M51 70h4v6h-4zm44 0h4v6h-4z"/>
+            <path class="cat-ink mouth-working" d="M72 89h8v3h-8zm8-3h10v3H80z"/>
+            <path class="cat-ink mouth-waiting" d="M70 90h12v5H70z"/>
+          </g>
+          <g class="face face-required">
+            <path class="cat-ink" d="M44 65h18v20H44zm46 0h18v20H90zM70 88h12v9H70z"/>
+            <path class="cat-eye" d="M49 69h5v7h-5zm46 0h5v7h-5z"/>
+          </g>
+          <g class="face face-happy">
+            <path class="cat-ink" d="M45 72h7v4h-7zm7 4h11v4H52zm37 0h11v4H89zm11-4h7v4h-7zM61 87h5v4h-5zm4 4h6v4h-6zm5 4h12v4H70zm11-4h6v4h-6zm5-4h5v4h-5z"/>
+          </g>
+          <g class="face face-error">
+            <path class="cat-ink" d="M45 67h5v5h-5zm5 5h5v5h-5zm5-5h5v5h-5zm32 0h5v5h-5zm5 5h5v5h-5zm5-5h5v5h-5zM67 92h18v4H67z"/>
+          </g>
+          <g class="face face-offline">
+            <path class="cat-ink" d="M47 68h14v14H47zm44 0h14v14H91zM70 91h12v3H70z"/>
+            <path class="cat-dim" d="M51 71h6v8h-6zm44 0h6v8h-6z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="state-copy">
+        <p class="eyebrow">SELECTED AGENT</p>
+        <h3 id="agent">Connecting...</h3>
+        <h2 id="state">OFFLINE</h2>
+        <p id="message">Waiting for StateLamp Bridge</p>
+      </div>
+      <div class="clock" id="clock">--:--</div>
+    </section>
+
+    <section class="lower-grid">
+      <article class="card team-card">
+        <div class="card-title"><span>WHO IS DOING WHAT?</span><span class="count" id="working-count">0</span></div>
+        <div id="agent-selector" class="agent-selector"><p class="empty">No agents connected</p></div>
+      </article>
+
+      <div class="middle-stack">
+        <article class="card attention-card">
+          <div class="card-title"><span>NEEDS YOU</span><span class="count" id="attention-count">0</span></div>
+          <div id="attention-list" class="scroll-list"><p class="empty">No pending requests</p></div>
+        </article>
+        <article class="card event-card">
+          <div class="card-title"><span>STATE CHANGES</span><button id="clear-events" type="button">CLEAR</button></div>
+          <div id="event-list" class="scroll-list"><p class="empty">No state changes yet</p></div>
+        </article>
+      </div>
+
+      <article class="card host-card">
+        <div class="card-title"><span>LINUX HOST</span></div>
+        <div class="metrics">
+          <div><span>HOST</span><strong id="host-name">N/A</strong></div>
+          <div><span>TEMP</span><strong id="host-temp">N/A</strong></div>
+          <div><span>LOAD</span><strong id="host-load">N/A</strong></div>
+          <div><span>MEM</span><strong id="host-memory">N/A</strong></div>
+          <div><span>DISK</span><strong id="host-disk">N/A</strong></div>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

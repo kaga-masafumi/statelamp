@@ -1,0 +1,26 @@
+services:
+  bridge:
+    build:
+      context: ./bridge
+    image: statelamp-bridge:local
+    ports:
+      - "${STATELAMP_BIND_ADDRESS:-127.0.0.1}:18480:8000"
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - >-
+          import urllib.request;
+          urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2).read()
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s

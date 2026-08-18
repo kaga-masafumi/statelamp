@@ -1,0 +1,22 @@
+{
+  "name": "statelamp",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "peerDependencies": {
+    "openclaw": ">=2026.7.1"
+  },
+  "openclaw": {
+    "extensions": ["./index.ts"],
+    "compat": {
+      "pluginApi": ">=2026.7.1",
+      "minGatewayVersion": "2026.7.1"
+    }
+  },
+  "bin": {
+    "statelamp-human": "./statelamp-human.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

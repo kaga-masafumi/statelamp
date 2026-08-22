@@ -3,21 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>StateLamp Console</title>
+  <meta name="theme-color" content="#071116">
+  <title>StateLamp Mission Control</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-state="offline">
   <main>
-    <header>
-      <div>
-        <p class="eyebrow">STATELAMP</p>
-        <h1>Agent Team</h1>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><i></i></span>
+        <div>
+          <p class="eyebrow">STATELAMP</p>
+          <h1>Mission Control</h1>
+        </div>
       </div>
       <div class="agent-nav"><span id="agent-count">0 AGENTS</span><button id="auto-select" type="button">AUTO</button></div>
       <div class="connection"><span id="connection-dot"></span><span id="connection">OFFLINE</span></div>
     </header>
 
-    <section class="state-panel">
+    <section class="state-panel" aria-live="polite">
       <div class="mascot-wrap" aria-label="Pixel cat mascot">
         <span class="sparkle sparkle-one">+</span>
         <span class="sparkle sparkle-two">o</span>
@@ -67,7 +71,7 @@
 
     <section class="lower-grid">
       <article class="card team-card">
-        <div class="card-title"><span>WHO IS DOING WHAT?</span><span class="count" id="working-count">0</span></div>
+        <div class="card-title"><span>AGENT ROSTER</span><span class="count" id="working-count">0</span></div>
         <div id="agent-selector" class="agent-selector"><p class="empty">No agents connected</p></div>
       </article>
 
@@ -83,7 +87,7 @@
       </div>
 
       <article class="card host-card">
-        <div class="card-title"><span>LINUX HOST</span></div>
+        <div class="card-title"><span>LINUX HOST</span><span class="host-pulse" aria-hidden="true"></span></div>
         <div class="metrics">
           <div><span>HOST</span><strong id="host-name">N/A</strong></div>
           <div><span>TEMP</span><strong id="host-temp">N/A</strong></div>

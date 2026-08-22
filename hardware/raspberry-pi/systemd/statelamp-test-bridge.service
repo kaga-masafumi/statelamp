@@ -1,0 +1,16 @@
+[Unit]
+Description=StateLamp test Bridge API (local only)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/statelamp-test
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/statelamp-test/bridge/.venv/bin/uvicorn app.main:app --app-dir bridge --host 127.0.0.1 --port 28000
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target

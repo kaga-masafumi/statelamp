@@ -113,8 +113,8 @@ class ConsoleServerTest(unittest.TestCase):
     def test_static_ui(self):
         with urlopen(self.base + "/") as response:
             body = response.read().decode()
-        self.assertIn("StateLamp Console", body)
-        self.assertIn("WHO IS DOING WHAT?", body)
+        self.assertIn("StateLamp Mission Control", body)
+        self.assertIn("AGENT ROSTER", body)
         self.assertIn("NEEDS YOU", body)
         self.assertIn("STATE CHANGES", body)
 

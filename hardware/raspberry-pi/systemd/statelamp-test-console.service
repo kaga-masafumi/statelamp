@@ -1,0 +1,17 @@
+[Unit]
+Description=StateLamp test Console server (local only)
+After=statelamp-test-bridge.service
+Requires=statelamp-test-bridge.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/statelamp-test
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 %h/statelamp-test/hardware/raspberry-pi/console/server.py --host 127.0.0.1 --port 28880 --bridge-url http://127.0.0.1:28000
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target
